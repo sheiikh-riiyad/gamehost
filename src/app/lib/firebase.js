@@ -1,7 +1,8 @@
 // lib/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth"; // ✅ Add this
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore"; // ✅ MISSING import
 
 const firebaseConfig = {
   apiKey: "AIzaSyBp0UQIdni7IEoECiIkX0lV32Vjcl8tJ90",
@@ -15,7 +16,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null; // only run in browser
+const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
+const auth = getAuth(app);
+const db = getFirestore(app); // ✅ Firestore initialized
 
-// ✅ Add and export this:
-export const auth = getAuth(app);
+// ✅ Export both auth and db
+export { auth, db };

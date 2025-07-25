@@ -2,7 +2,10 @@
 import React, { useRef, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
-
+import { useRouter } from "next/navigation";
+import { db } from "./lib/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useState } from 'react';
 
 export default function Home() {
   const scrollRef = useRef(null);
@@ -45,6 +48,28 @@ export default function Home() {
       slider.removeEventListener('mousemove', mouseMove);
     };
   }, []);
+
+
+
+
+  const router = useRouter()
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      const querySnapshot = await getDocs(collection(db, "games"));
+      const data = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setGames(data);
+    };
+
+    fetchGames();
+  }, []);
+
+
+
 
   return (
     <>
@@ -92,26 +117,21 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='homelogo'>
-
-            <div className="cart-containe" >
-
-            
-            <div className="game-cart">
-                <div className="game-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/Tom_Clancy_Ghost_Recon_Future_Soldier_Game_Cover.jpg" />
-                </div>
-                <div className="game-info">
-                    <h2 className="game-title">Tom clancy ghost recon future soldier </h2>
-                    <button>DOWNLOAD</button>
-                </div>
-            
-            </div> 
-
-
-            </div> 
-
+  <div className="homelogo">
+  <div className="cart-containe">
+    {games.map((game) => (
+      <div className="game-cart" key={game.id}>
+        <div className="game-image">
+          <img src={game.cover} alt={game.title} />
+        </div>
+        <div className="game-info">
+          <h2 className="game-title">{game.title}</h2>
+          <button onClick={() => router.push(`/download/${game.id}`)}>DOWNLOAD</button>
+        </div>
       </div>
+    ))}
+  </div>
+</div>
     </>
   );
 }
