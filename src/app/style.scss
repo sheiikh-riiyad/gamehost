@@ -1,0 +1,569 @@
+.home {
+  background: url('./media/pic1.jpg');
+  background-size: cover;
+  background-position: center;
+  
+  min-height: 100vh;
+}
+
+.homelogo{
+  margin-left: 10px;
+}
+
+.game{
+  font-family: bold;
+  font-size: 30px;
+  width: 100%;
+  height: 60px;
+  
+}
+
+
+
+
+
+$primary: #11998e;
+$secondary: #059be0;
+$white: #fff;
+$gray: #000000;
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight:700;    
+  }
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
+}
+
+
+
+/* From Uiverse.io by cssbuttons-io */ 
+.fancy {
+ background-color: transparent;
+ border: 2px solid #000;
+ border-radius: 0;
+ box-sizing: border-box;
+ color: #fff;
+ cursor: pointer;
+ display: inline-block;
+ float: right;
+ font-weight: 700;
+ letter-spacing: 0.05em;
+ margin: 0;
+ outline: none;
+ overflow: visible;
+ padding: 1.25em 2em;
+ position: relative;
+ text-align: center;
+ text-decoration: none;
+ text-transform: none;
+ transition: all 0.3s ease-in-out;
+ user-select: none;
+ font-size: 13px;
+}
+
+.fancy::before {
+ content: " ";
+ width: 1.5625rem;
+ height: 2px;
+ background: black;
+ top: 50%;
+ left: 1.5em;
+ position: absolute;
+ transform: translateY(-50%);
+ transform-origin: center;
+ transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancy .text {
+ font-size: 1.125em;
+ line-height: 1.33333em;
+ padding-left: 2em;
+ display: block;
+ text-align: left;
+ transition: all 0.3s ease-in-out;
+ text-transform: uppercase;
+ text-decoration: none;
+ color: black;
+}
+
+.fancy .top-key {
+ height: 2px;
+ width: 1.5625rem;
+ top: -2px;
+ left: 0.625rem;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+ height: 2px;
+ width: 1.5625rem;
+ right: 1.875rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+ height: 2px;
+ width: 0.625rem;
+ right: 0.625rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+ color: white;
+ background: black;
+}
+
+.fancy:hover::before {
+ width: 0.9375rem;
+ background: white;
+}
+
+.fancy:hover .text {
+ color: white;
+ padding-left: 1.5em;
+}
+
+.fancy:hover .top-key {
+ left: -2px;
+ width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+ .fancy:hover .bottom-key-2 {
+ right: 0;
+ width: 0;
+}
+
+
+
+/* From Uiverse.io by cssbuttons-io */ 
+buttonS {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:active,
+button:hover {
+  outline: 0;
+}
+
+button span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+button:hover span {
+  background: none;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+
+
+
+
+
+/* From Uiverse.io by cssbuttons-io */ 
+.fancys {
+ background-color: transparent;
+ border: 2px solid #000;
+ border-radius: 0;
+ box-sizing: border-box;
+ color: #fff;
+ cursor: pointer;
+ display: inline-block;
+ 
+ font-weight: 700;
+ letter-spacing: 0.05em;
+ margin: 0;
+ outline: none;
+ overflow: visible;
+ padding: 0.7em 1em;
+ position: relative;
+ text-align: center;
+ text-decoration: none;
+ text-transform: none;
+ transition: all 0.3s ease-in-out;
+ user-select: none;
+ font-size: 13px;
+ margin-right: 5px;
+}
+
+.fancys::before {
+ content: " ";
+ width: 1.5625rem;
+ height: 2px;
+ background: black;
+ top: 50%;
+ left: 1.5em;
+ position: absolute;
+ transform: translateY(-50%);
+ transform-origin: center;
+ transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancys .texts {
+ font-size: 1.125em;
+ line-height: 1.33333em;
+ padding-left: 2em;
+ display: block;
+ text-align: left;
+ transition: all 0.3s ease-in-out;
+ text-transform: uppercase;
+ text-decoration: none;
+ color: black;
+}
+
+.fancys .top-keys {
+ height: 2px;
+ width: 1.5625rem;
+ top: -2px;
+ left: 0.625rem;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancys .bottom-key-1s {
+ height: 2px;
+ width: 1.5625rem;
+ right: 1.875rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancys .bottom-key-2s {
+ height: 2px;
+ width: 0.625rem;
+ right: 0.625rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancys:hover {
+ color: white;
+ background: black;
+}
+
+.fancys:hover::before {
+ width: 0.9375rem;
+ background: white;
+}
+
+.fancys:hover .texts {
+ color: white;
+ padding-left: 1.5em;
+}
+
+.fancys:hover .top-keys {
+ left: -2px;
+ width: 0px;
+}
+
+.fancys:hover .bottom-key-1s,
+ .fancys:hover .bottom-key-2s {
+ right: 0;
+ width: 0;
+}
+
+
+
+
+
+
+/* From Uiverse.io by ElSombrero2 */ 
+
+    .cart-card {
+      width: 200px;
+      height: 300px;
+      
+      border: 4px solid #ff4500;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #ff4500;
+      text-shadow: 0 0 10px #ff4500, 0 0 20px #ff4500;
+      margin-top: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+      background: url("./media/pic3.jpg");
+      background-size: cover;
+      background-position: center;
+  
+      
+      
+    }
+    .cart-card::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 69, 0, 0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+    .cart-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px #ff4500, 0 0 40px #ff4500;
+    }
+    .cart-card:hover::before {
+      opacity: 1;
+    }
+    .cart-content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1rem;
+      color: #e0e1dd;
+    }
+    .neon-btn {
+      margin-top: 20px;
+      background: #ff4500;
+      color: #0d1b2a;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .neon-btn:hover {
+      background: #ff8c00;
+      box-shadow: 0 0 10px #ff8c00, 0 0 20px #ff8c00;
+    }
+    @font-face {
+      font-family: 'Orbitron';
+      src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    }
+.cursor-grab {
+cursor: grab;
+}
+.cursor-grabbing {
+  cursor: grabbing !important;
+}
+
+
+
+/* Hide horizontal scrollbar - Chrome, Safari, Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar - Firefox */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+/* Prevent accidental vertical scroll */
+.hide-scrollbar {
+  overflow-y: hidden;
+}
+
+
+
+.game-cart {
+            width: 250px;
+            height: 350px;
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            border: 2px solid #00ffea;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            margin: 10px;
+            flex-wrap: wrap;
+            
+        }
+
+        .game-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 234, 0.8);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 60%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .game-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 255, 234, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-cart:hover .game-image::before {
+            opacity: 1;
+        }
+
+        .game-info {
+            padding: 15px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .game-title {
+            font-size: 1.5em;
+            margin: 0;
+            color: #00ffea;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: neon-glow 1.5s ease-in-out infinite alternate;
+        }
+
+        
+
+        // .buy-button {
+        //     background: #ff007a;
+        //     color: #fff;
+        //     padding: 10px 20px;
+        //     border: none;
+        //     border-radius: 5px;
+        //     font-size: 1em;
+        //     cursor: pointer;
+        //     transition: background 0.3s ease, transform 0.2s ease;
+        // }
+
+        // .buy-button:hover {
+        //     background: #00ffea;
+        //     color: #000;
+        //     transform: translateY(-3px);
+        // }
+
+        @keyframes neon-glow {
+            from {
+                text-shadow: 0 0 5px #00ffea, 0 0 10px #00ffea, 0 0 15px #00ffea;
+            }
+            to {
+                text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea, 0 0 30px #00ffea;
+            }
+        }
+
+
+.cart-containe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+

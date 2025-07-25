@@ -1,103 +1,117 @@
-import Image from "next/image";
+"use client";
+import React, { useRef, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from './components/Navbar';
+
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const scrollRef = useRef(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  useEffect(() => {
+    const slider = scrollRef.current;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const mouseDown = (e) => {
+      isDown = true;
+      slider.classList.add('cursor-grabbing');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    };
+
+    const mouseLeaveOrUp = () => {
+      isDown = false;
+      slider.classList.remove('cursor-grabbing');
+    };
+
+    const mouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // scroll speed
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
+    slider.addEventListener('mousedown', mouseDown);
+    slider.addEventListener('mouseleave', mouseLeaveOrUp);
+    slider.addEventListener('mouseup', mouseLeaveOrUp);
+    slider.addEventListener('mousemove', mouseMove);
+
+    return () => {
+      slider.removeEventListener('mousedown', mouseDown);
+      slider.removeEventListener('mouseleave', mouseLeaveOrUp);
+      slider.removeEventListener('mouseup', mouseLeaveOrUp);
+      slider.removeEventListener('mousemove', mouseMove);
+    };
+  }, []);
+
+  return (
+    <>
+      <div className='home h-screen bg-black text-white hide-scrollbar'>
+        <Navbar />
+
+        <div className="searchbar flex flex-col items-center gap-10 mt-10 ">
+          {/* Input Field */}
+          <div className="form__group field w-[50%] shadow-emerald-500 shadow-md">
+            <input
+              type="text"
+              className="form__field  "
+              placeholder="SEARCH YOUR FAVORITE"
+              name="name"
+              id="name"
+              required
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            <label htmlFor="name" className="form__label">
+              SEARCH YOUR FAVORITE
+            </label>
+          </div>
+
+          {/* Button */}
+          <a className="fancy" href="#">
+            <span className="top-key"></span>
+            <span className="text">SEARCH</span>
+            <span className="bottom-key-1"></span>
+            <span className="bottom-key-2"></span>
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Scrollable Card Section */}
+        <div className="overflow-x-auto whitespace-nowrap px-6 py-10 cursor-grab select-none hide-scrollbar"  ref={scrollRef}>
+          <div className="inline-flex gap-4">
+            {Array(10).fill(0).map((_, index) => (
+              <div key={index} className="cart-card">
+                <div className="cart-content">
+                  <h2>GHOST RECON</h2>
+                  <p>FUTURE SOLDEIR</p>
+                  <button className="neon-btn">DOWNLOAD</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className='homelogo'>
+
+            <div className="cart-containe" >
+
+            
+            <div className="game-cart">
+                <div className="game-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/Tom_Clancy_Ghost_Recon_Future_Soldier_Game_Cover.jpg" />
+                </div>
+                <div className="game-info">
+                    <h2 className="game-title">Tom clancy ghost recon future soldier </h2>
+                    <button>DOWNLOAD</button>
+                </div>
+            
+            </div> 
+
+
+            </div> 
+
+      </div>
+    </>
   );
 }
