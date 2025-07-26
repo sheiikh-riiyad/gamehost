@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { db } from "./lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useState } from 'react';
+import Footer from './pages/footer';
 
 export default function Home() {
   const scrollRef = useRef(null);
@@ -132,6 +133,9 @@ export default function Home() {
     ))}
   </div>
 </div>
+
+
+        <Footer/>
     </>
   );
 }

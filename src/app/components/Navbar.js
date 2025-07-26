@@ -15,6 +15,7 @@ import {
 
 
 import { auth } from "../lib/firebase.js";
+import Link from "next/link.js";
 
 export default function Navbar() {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -187,7 +188,7 @@ const handleGitHubLogin = async () => {
       {/* NAVBAR */}
       <div className='game shadow-cyan-500 shadow-md place-content-between flex p-2'>
         <div className="homelogo">
-          <a href="#"><img src="/media/gamehost.png" alt="GAMEHOST" /></a>
+          <Link href="/"><img src="/media/gamehost.png" alt="GAMEHOST" /></Link>
         </div>
 
         <div>

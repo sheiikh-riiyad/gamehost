@@ -25,8 +25,10 @@ export default async function GamePage({ params }) {
     <div className="text-white p-4">
       <h1 className="text-3xl font-bold mb-4 text-black">{game.title}</h1>
       <img src={game.cover} alt={game.title} className="mb-4" />
-      <p>{game.description}</p>
+      <p className='text-green'>{game.description}</p>
+      <p className='text-green'>DOWNLOAD LINK: {game.downloadUrl}</p>
       <a href={game.downloadUrl} target="_blank">
+
         <button className="neon-btn">Download Now</button>
       </a>
     </div>
