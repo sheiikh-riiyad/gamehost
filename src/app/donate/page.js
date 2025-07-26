@@ -1,6 +1,7 @@
 const Donate = () => {
   return (
     <>
+    <h1>hello</h1>
       {/* <div className="text-center bg-amber-200 min-w-auto p-8">
         <h1>Donate Us For Poor People</h1>
         <h3>When you give, they live</h3>
