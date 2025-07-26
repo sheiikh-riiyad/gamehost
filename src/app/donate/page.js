@@ -83,6 +83,9 @@ const Donate = () => {
           <Col>
             <div className="bg-transparent text-center text-white">
               <h1>BANGLADESH</h1>
+              <h4>Cellfin</h4>
+            <p className=''> <strong>01908767162</strong> </p>
+
               <p className="mt-4 font-semibold">bKash Merchant Number:</p>
               <p className="text-xl font-bold">01750433879</p>
 
@@ -95,6 +98,7 @@ const Donate = () => {
 />
               </div>
             </div>
+            
           </Col>
 
           <Col>
