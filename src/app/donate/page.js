@@ -1,4 +1,4 @@
-"use client"
+"use client";
 const Donate = () => {
   return (
     <>
@@ -15,13 +15,13 @@ const Donate = () => {
             <br /><br />
             Our charity efforts are managed directly by our team at Talukdar Auto Rice Mill to ensure transparency, 
             accountability, and genuine impact. We regularly organize food distributions, arrange temporary shelters, 
-            and extend emergency support during times of crisis. Whether it,s a child who needs a warm meal, 
+            and extend emergency support during times of crisis. Whether it&apos;s a child who needs a warm meal, 
             an elderly person who needs a safe place to sleep, or a family facing unexpected hardship — 
             our goal is to be there when it matters most.
             <br /><br />
             We firmly believe that no one should go to bed hungry or live without a roof over their head, and through this fund, 
             we aim to turn that belief into action. Every small donation makes a big difference. 
-            When you support our charity fund, you,re not just giving — you,re saving lives, restoring hope, 
+            When you support our charity fund, you&apos;re not just giving — you&apos;re saving lives, restoring hope, 
             and building a more compassionate future for our community.
           </strong>
         </p>
@@ -30,27 +30,27 @@ const Donate = () => {
       <div className="bg-amber-100 min-w-auto text-center pb-0">
         <p className="text-black p-8">
           Imagine going to sleep hungry. Imagine having no roof above your head, no warm meal to comfort you, 
-          no place to feel safe. For many, this is not just imagination — it,s their everyday reality.
+          no place to feel safe. For many, this is not just imagination — it&apos;s their everyday reality.
           <br /><br />
           At <strong>Talukdar Auto Rice Mill</strong>, we do more than produce rice — we nurture hope. 
-          We've opened our hearts and created a charity fund to help the most vulnerable around us: 
-          the children with no meals, the elderly with no shelter, and families who,ve lost everything but their will to survive.
+          We&apos;ve opened our hearts and created a charity fund to help the most vulnerable around us: 
+          the children with no meals, the elderly with no shelter, and families who&apos;ve lost everything but their will to survive.
           <br /><br />
           Every single day, with your help, we provide warm food, a safe place to rest, and the dignity every human deserves. 
           But we cannot do this alone.
           <br /><br />
           We need your hand. Your heart. Your support.
           <br /><br />
-          Because when you give — even a little — <strong>you,re not just donating money. 
-          You,re feeding someone,s hunger, sheltering someone,s fear, and restoring someone,s faith in humanity.</strong>
+          Because when you give — even a little — <strong>you&apos;re not just donating money. 
+          You&apos;re feeding someone&apos;s hunger, sheltering someone&apos;s fear, and restoring someone&apos;s faith in humanity.</strong>
           <br /><br />
-          Let,s build a world where no one sleeps on an empty stomach. Let,s light up the lives that have been lost in darkness.
+          Let&apos;s build a world where no one sleeps on an empty stomach. Let&apos;s light up the lives that have been lost in darkness.
         </p>
         <h4 className="pb-4">Donate today. Be the reason someone smiles tomorrow.</h4>
       </div>
 
       <div className="bg-amber-300 pt-0 p-8 text-center min-w-auto security">
-        <h2>Donation Security & Fund Usage Statement</h2>
+        <h2>Donation Security &amp; Fund Usage Statement</h2>
         <p className="text-black">
           At <strong>Talukdar Auto Rice Mill</strong>, we value your trust above all else. 
           Every donation you make is used exclusively for our charity fund, 
