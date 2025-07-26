@@ -1,4 +1,9 @@
 "use client";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import { QRCodeSVG } from "qrcode.react";
+
 const Donate = () => {
   return (
     <>
@@ -72,6 +77,35 @@ const Donate = () => {
           </strong>
         </p>
       </div>
+      <div className="p-8 bg-fuchsia-500">
+      <Container>
+        <Row>
+          <Col>
+            <div className="bg-transparent text-center text-white">
+              <h1>BANGLADESH</h1>
+              <p className="mt-4 font-semibold">bKash Merchant Number:</p>
+              <p className="text-xl font-bold">01750433879</p>
+
+              <div className="mx-auto mt-4 inline-block bg-white p-4 rounded shadow">
+                <QRCodeSVG
+  value="https://qr.bka.sh/28101400001XdeGSTAwXFC4877A8"
+  size={200}
+  level="H"
+  includeMargin={true}
+/>
+              </div>
+            </div>
+          </Col>
+
+          <Col>
+            <div className="text-center text-white">
+              <h1>INTERNATIONAL</h1>
+              <p className='text-black'>Comming soon...</p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
     </>
   );
 };
