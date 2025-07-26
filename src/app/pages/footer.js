@@ -7,11 +7,14 @@ const Footer = () => {
 
   return (
     <div className="bg-blue-400 h-30 text-center">
+
+      <p className="text-black"> <strong>If You Satisfied Our Site</strong></p>
+
       <button
         onClick={() => router.push(`/donate`)}
         className="bg-black text-white px-4 py-2 rounded"
       >
-        Donate Us For the poor people.
+        Donate Us| For the poor people.
       </button>
 
       <h4 className="font-mono">
