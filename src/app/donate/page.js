@@ -3,11 +3,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { QRCodeSVG } from "qrcode.react";
+import Navbar from '../components/Navbar';
 
 const Donate = () => {
   return (
     <>
-      <div className="text-center bg-amber-200 min-w-auto p-8">
+    <div className='bg-amber-200'>
+        <Navbar/>
+      <div className="text-center  min-w-auto p-8">
         <h1>Donate Us For Poor People</h1>
         <h3>When you give, they live</h3>
         <p className="text-black font-semibold">
@@ -31,6 +34,7 @@ const Donate = () => {
           </strong>
         </p>
       </div>
+    </div>
 
       <div className="bg-amber-100 min-w-auto text-center pb-0">
         <p className="text-black p-8">
@@ -110,6 +114,7 @@ const Donate = () => {
         </Row>
       </Container>
     </div>
+    
     </>
   );
 };

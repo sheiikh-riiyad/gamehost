@@ -6,7 +6,8 @@ const Footer = () => {
   const router = useRouter();
 
   return (
-    <div className="bg-blue-400 h-30 text-center">
+    <>
+    <div className="bg-blue-400 h-35 text-center">
 
       <p className="text-black"> <strong>If You Satisfied Our Site</strong></p>
 
@@ -20,7 +21,9 @@ const Footer = () => {
       <h4 className="font-mono">
         &copy; {currentYear} GAMEHOSTs. DOWNLOAD ALL GAMES FOR FREE
       </h4>
+    <p className="text-black"> this website made by  <a className="text-black" href=""> <strong> BlueheartDev </strong></a>  </p>
     </div>
+    </>
   );
 };
 
