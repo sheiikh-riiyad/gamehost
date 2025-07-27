@@ -69,8 +69,52 @@ export default function Home() {
     fetchGames();
   }, []);
 
+  
 
 
+// search option
+
+  const [searchInput, setSearchInput] = useState(""); // For the input field
+  const [filteredGames, setFilteredGames] = useState([]); // For showing
+
+
+
+  useEffect(() => {
+  const fetchGames = async () => {
+    const querySnapshot = await getDocs(collection(db, "games"));
+    const data = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setGames(data);
+    setFilteredGames(data); // <-- Set this too
+  };
+
+  fetchGames();
+}, []);
+
+
+
+  const handleSearchChange = (e) => {
+  setSearchInput(e.target.value);
+};
+
+const handleSearchClick = () => {
+  if (searchInput.trim() === "") {
+    setFilteredGames(games); // Reset to all if input is empty
+  } else {
+    const result = games.filter((game) =>
+      game.title.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setFilteredGames(result);
+  }
+
+  setTimeout(() => {
+    resultsRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, 10);
+};
+
+  const resultsRef = useRef(null);
 
   return (
     <>
@@ -87,6 +131,8 @@ export default function Home() {
               name="name"
               id="name"
               required
+              value={searchInput}
+              onChange={handleSearchChange}
             />
             <label htmlFor="name" className="form__label">
               SEARCH YOUR FAVORITE
@@ -94,7 +140,10 @@ export default function Home() {
           </div>
 
           {/* Button */}
-          <a className="fancy" href="#">
+          <a className="fancy" onClick={(e) => {
+    e.preventDefault(); // stop link behavior
+    handleSearchClick();
+  }}>
             <span className="top-key"></span>
             <span className="text">SEARCH</span>
             <span className="bottom-key-1"></span>
@@ -119,8 +168,8 @@ export default function Home() {
       </div>
 
   <div className="homelogo">
-  <div className="cart-containe">
-    {games.map((game) => (
+  <div className="cart-containe" ref={resultsRef}>
+    {filteredGames.map((game) => (
       <div className="game-cart" key={game.id}>
         <div className="game-image">
           <img src={game.cover} alt={game.title} />
