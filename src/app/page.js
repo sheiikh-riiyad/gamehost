@@ -12,49 +12,52 @@ export default function Home() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    const slider = scrollRef.current;
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+  const slider = scrollRef.current;
+  if (!slider) return; // 👈 prevent null reference
 
-    const mouseDown = (e) => {
-      isDown = true;
-      slider.classList.add('cursor-grabbing');
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    };
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-    const mouseLeaveOrUp = () => {
-      isDown = false;
-      slider.classList.remove('cursor-grabbing');
-    };
+  const mouseDown = (e) => {
+    isDown = true;
+    slider.classList.add('cursor-grabbing');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  };
 
-    const mouseMove = (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 2; // scroll speed
-      slider.scrollLeft = scrollLeft - walk;
-    };
+  const mouseLeaveOrUp = () => {
+    isDown = false;
+    slider.classList.remove('cursor-grabbing');
+  };
 
-    slider.addEventListener('mousedown', mouseDown);
-    slider.addEventListener('mouseleave', mouseLeaveOrUp);
-    slider.addEventListener('mouseup', mouseLeaveOrUp);
-    slider.addEventListener('mousemove', mouseMove);
+  const mouseMove = (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+  };
 
-    return () => {
-      slider.removeEventListener('mousedown', mouseDown);
-      slider.removeEventListener('mouseleave', mouseLeaveOrUp);
-      slider.removeEventListener('mouseup', mouseLeaveOrUp);
-      slider.removeEventListener('mousemove', mouseMove);
-    };
-  }, []);
+  slider.addEventListener('mousedown', mouseDown);
+  slider.addEventListener('mouseleave', mouseLeaveOrUp);
+  slider.addEventListener('mouseup', mouseLeaveOrUp);
+  slider.addEventListener('mousemove', mouseMove);
+
+  return () => {
+    slider.removeEventListener('mousedown', mouseDown);
+    slider.removeEventListener('mouseleave', mouseLeaveOrUp);
+    slider.removeEventListener('mouseup', mouseLeaveOrUp);
+    slider.removeEventListener('mousemove', mouseMove);
+  };
+}, []);
 
 
 
 
   const router = useRouter()
   const [games, setGames] = useState([]);
+  
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -68,6 +71,8 @@ export default function Home() {
 
     fetchGames();
   }, []);
+
+ 
 
   
 
@@ -116,6 +121,27 @@ const handleSearchClick = () => {
 
   const resultsRef = useRef(null);
 
+
+
+
+  const [highlightedGames, setHighlightedGames] = useState([]);
+
+
+  useEffect(() => {
+  const fetchHighlights = async () => {
+    const querySnapshot = await getDocs(collection(db, "highlight"));
+    const data = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setHighlightedGames(data);
+  };
+
+  fetchHighlights();
+}, []);
+
+
+
   return (
     <>
       <div className='home h-screen bg-black text-white hide-scrollbar'>
@@ -152,19 +178,30 @@ const handleSearchClick = () => {
         </div>
 
         {/* Scrollable Card Section */}
-        <div className="overflow-x-auto whitespace-nowrap px-6 py-10 cursor-grab select-none hide-scrollbar"  ref={scrollRef}>
-          <div className="inline-flex gap-4">
-            {Array(10).fill(0).map((_, index) => (
-              <div key={index} className="cart-card">
-                <div className="cart-content">
-                  <h2>GHOST RECON</h2>
-                  <p>FUTURE SOLDEIR</p>
-                  <button className="neon-btn">DOWNLOAD</button>
-                </div>
-              </div>
-            ))}
-          </div>
+     <div className="inline-flex gap-4">
+  {highlightedGames.map((game) => (
+    <div key={game.id} className="game-cart w-64 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-4 shadow-lg hover:scale-105 transition-transform duration-300">
+      <div className="cart-content flex flex-col items-center text-center">
+        <div className="game-image mb-4">
+          <img
+            src={game.cover}
+            alt={game.title}
+            className="w-full h-40 object-cover rounded-xl shadow-md"
+          />
         </div>
+        <h2 className="game-title text-lg font-bold text-white drop-shadow-sm mb-2">
+          {game.title}
+        </h2>
+        <button
+          className="neon-btn mt-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-xl shadow hover:shadow-lg transition-all duration-200"
+          onClick={() => router.push(`/highlight/${game.id}`)}
+        >
+          DOWNLOAD
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
       </div>
 
   <div className="homelogo">
