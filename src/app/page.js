@@ -180,20 +180,23 @@ const handleSearchClick = () => {
         {/* Scrollable Card Section */}
      <div className="inline-flex gap-4">
   {highlightedGames.map((game) => (
-    <div key={game.id} className="game-cart w-64 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-4 shadow-lg hover:scale-105 transition-transform duration-300">
+    <div
+      key={game.id}
+      className="game-cart w-56 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-3 shadow-md hover:scale-105 transition-transform duration-300"
+    >
       <div className="cart-content flex flex-col items-center text-center">
-        <div className="game-image mb-4">
+        <div className="game-image mb-3">
           <img
             src={game.cover}
             alt={game.title}
-            className="w-full h-40 object-cover rounded-xl shadow-md"
+            className="w-full h-32 object-cover rounded-lg shadow-sm"
           />
         </div>
-        <h2 className="game-title text-lg font-bold text-white drop-shadow-sm mb-2">
+        <h2 className="game-title text-base font-semibold text-white mb-2 line-clamp-2">
           {game.title}
         </h2>
         <button
-          className="neon-btn mt-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-xl shadow hover:shadow-lg transition-all duration-200"
+          className="neon-btn bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium px-3 py-1.5 rounded-lg shadow hover:shadow-md transition-all duration-200"
           onClick={() => router.push(`/highlight/${game.id}`)}
         >
           DOWNLOAD

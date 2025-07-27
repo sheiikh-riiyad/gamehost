@@ -1,5 +1,8 @@
+import Navbar from '@/app/components/Navbar';
 import { db } from '@/app/lib/firebase';
+import Footer from '@/app/pages/footer';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+
 
 export async function generateStaticParams() {
   const querySnapshot = await getDocs(collection(db, 'highlight'));
@@ -21,6 +24,8 @@ export default async function HighlightPage({ params }) {
   const game = gameSnap.data();
 
   return (
+    <>
+    <Navbar/>
     <div className="text-white p-8 min-h-screen bg-black">
       <h1 className="text-3xl font-bold mb-4">{game.title}</h1>
       <img
@@ -34,5 +39,7 @@ export default async function HighlightPage({ params }) {
         <button className="neon-btn">Download Now</button>
       </a>
     </div>
+    <Footer/>
+    </>
   );
 }
